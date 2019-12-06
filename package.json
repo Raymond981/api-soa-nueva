@@ -9,7 +9,8 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.1",
     "stripe": "^7.14.0",
-    "mocha": "^6.2.0"
+    "mocha": "^6.2.0",
+    "chai": "^4.2.0"
   },
   "devDependencies": {},
   "scripts": {
