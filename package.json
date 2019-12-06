@@ -1,0 +1,21 @@
+{
+  "name": "tics",
+  "version": "1.0.0",
+  "description": "Servidor stripe",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.1",
+    "stripe": "^7.14.0",
+    "mocha": "^6.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha ./server.spec.js --timeout 60000 --exit",
+    "start": "node server.js"
+  },
+  "author": "José Ramón Palacios Martínez",
+  "license": "ISC"
+}
