@@ -14,28 +14,29 @@ app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(path.join(__dirname, './views')));
 
+// Configurar cabeceras y cors
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
+
 // Future Code Goes Here
 
 app.post("/charge", (req, res) => {
-    try {
-        stripe.customers
-            .create({
-                name: req.body.name,
-                email: req.body.email,
-                source: req.body.stripeToken
-            })
-            .then(customer =>
-                stripe.charges.create({
-                    amount: req.body.amount * 100,
-                    currency: "usd",
-                    customer: customer.id
-                })
-            )
-            .then(() => res.render("completed.html"))
-            .catch(err => console.log(err));
-    } catch (err) {
-        res.send(err);
-    }
+    stripe.charges.create(
+        {
+          amount: req.body.amount,
+          currency: 'mxn',
+          source: req.body.stripeToken,
+          description: 'Gracias por tu donación',
+        },
+        function(err, charge) {
+            
+        }
+      ).then(() => res.json({Respuesta: "Hecho"})).catch(err => console.log(err));
 });
 
 const port = process.env.PORT || 3000;
