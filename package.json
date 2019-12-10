@@ -13,6 +13,9 @@
     "nodemon": "^2.0.1",
     "stripe": "^7.14.0"
   },
+  "engines": {
+    "node": "10.x"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "mocha ./server.spec.js --timeout 60000 --exit",
